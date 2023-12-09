@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolphin CRM</title>
+</head>
+
+
+<body>
+    
+    <header>
+
+        <div>
+            <h1>Dolphin CRM</h1>        
+        </div>
+    </header>
+
+    <div class="nav-bar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">New Contact</a></li>
+            <li><a href="#">Users</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+
+        <div id="home">
+            <div class="table-header">
+                <div class="page-heading">
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="add-button">
+                    <button id="button"><i class="fa-solid fa-plus"></i>Add Contact</button> 
+                </div>
+                
+            </div>
+
+            <div class="table-container">
+                <div class="table-filter">
+
+                    <label for="filter">Filter By:</label>
+                    <ul id="filter">
+                        <li><a href="#">All</a></li>
+                        <li><a href="#">Sales Leads</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Assigned to me</a></li>
+                    </ul>
+
+                </div>
+
+                <div class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Company</th>
+                            <th>Type</th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>View</td>
+                        </tr>
+                    </tbody>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="new-contact">
+
+            <h1>New Contact</h1>
+            <div>
+                <form action="submit" method="post">
+
+                    <div class="input-container">
+                        <label for="title">Title</label>
+                        <select name="title" id="title">
+                            <option value="mr">Mr</option>
+                            <option value="mrs">Mrs</option>
+                            <option value="miss">Miss</option>
+
+                        </select>
+                       
+                    </div>
+
+                
+                    <div class="input-container">
+                        <label for="first-name">First Name</label>
+                        <input type="text" name="first-name" id="first-name">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" name="last-name" id="last-name">
+                    </div>
+                    
+                    <div class="input-container">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="telephone">Telephone</label>
+                        <input type="text" name="telephone" id="telephone">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="company">Company</label>
+                        <input type="text" name="company" id="company">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="sales-lead">Sales Lead</label>
+                        <input type="text" name="sales-lead" id="sales-lead">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="sales-lead">Sales Lead</label>
+                        <select name="sales-lead" id="sales-lead">
+                            <option value="salesLead">Sales Lead</option>
+                            <option value="support">Support</option>
+                        </select>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="assigned-to">Assigned To</label>
+                        <select name="assigned-to" id="assigned-to">
+                            <!-- <option value="Andy Bernard">Andy Bernard</option> -->
+                        </select>
+                    </div>
+
+                    <div class="save-button">
+                        <button id="button"></i>Save</button>
+                     </div>
+
+
+
+                </form>
+            
+            </div>
+            
+        </div>
+
+
+        <div id="users">
+
+            <div class="table-header">
+                <div class="page-heading">
+                    <h2>Users</h2>
+                </div>
+                <div class="add-button">
+                    <button id="button"><i class="fa-solid fa-plus"></i>Add User</button>
+                </div>
+                
+
+            </div>
+
+            <div>
+                <div class="table-container">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="new-user">
+            <h1>New User</h1>
+
+            <form action="sumbit" method="post">
+
+                <div class="input-container">
+                    <label for="first-name">First Name</label>
+                    <input type="text" name="first-name" id="first-name">
+                </div>
+
+                <div class="input-container">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" name="last-name" id="last-name">
+                </div>
+                
+                <div class="input-container">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+
+                <div class="input-container">
+                    <label for="password">Password</label>
+                    <input type="text" name="password" id="password">
+                </div>
+
+                <div class="input-container">
+                    <label for="role">Role</label>
+                    <select name="role" id="role">
+                        <option value="member">Member</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
+                <div class="save-button">
+                    <button id="button"></i>Save</button>
+                 </div>
+
+        
+            </form>
+
+             
+            <div class="view-contact">
+
+
+                <div id="view_header">
+                    <img src="" alt="">
+                    <div id="title">
+                        <h1>Mr.Nicheal Scott</h1>
+                        <p>
+                            the apple fell over the true
+                        </p>
+                    </div>
+
+
+                    <div id="buttons">  
+
+                        <button>
+                            <img src="" alt="">
+                            Assign to me
+                        </button>
+
+                        <button>
+                            <img src="" alt="">
+                            Switch to me
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="user-details">
+
+                    <div class="">
+                        <label for="email">Email</label>
+                        <p>carlyonthebest@gmail.com</p>
+
+                    </div>
+
+                    <div class="">
+                        <label for="email">Telephone</label>
+                        <p>222-222-222</p>
+
+                    </div>
+
+                    <div class="">
+                        <label for="email">Company</label>
+                        <p>love is good</p>
+
+                    </div>
+
+                    <div class="">
+                        <label for="email">Assign to</label>
+                        <p>Jonesh</p>
+                    </div>
+
+                    <div>
+                        <div id="note_header">
+                            <img src="" alt="">
+                            <h2>Notes</h2>
+                        </div>
+
+
+                        <section id="comments">
+                            <div id="comment">
+                                <p>
+                                    <strong>Jane doe</strong><br>
+                                    sadhvbxfjhv xf sdbsdchsdh jsdhcdshcbdshc
+
+                                </p>
+                            </div>
+
+
+
+                            <div>
+                                <label for="input_comment">Add a note about Micheal</label>
+                                <textarea name="input_comment" id="input_comment" cols="30" rows="10"></textarea>
+                            </div>
+
+                            <button>Add Note</button>
+
+
+
+                        </section>
+
+
+                    </div>
+                    
+
+                    
+
+
+
+
+
+            </div>
+
+        </div>
+
+        <div id="logout">
+
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>
