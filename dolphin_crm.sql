@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2023 at 05:26 PM
+-- Generation Time: Dec 10, 2023 at 07:59 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -69,7 +69,7 @@ CREATE TABLE `Users` (
   `password` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `role` varchar(255) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL
+  `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -77,7 +77,7 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`id`, `firstname`, `lastname`, `password`, `email`, `role`, `created_at`) VALUES
-(1, 'admin', 'project', '$2y$10$jsuMczg.RrKEmsz04eFWhegfgNJuyYi1E4TlevDxHCfu.ESsSoL.G', 'admin@project2.com', NULL, NULL);
+(1, 'admin', 'project', '$2y$10$jsuMczg.RrKEmsz04eFWhegfgNJuyYi1E4TlevDxHCfu.ESsSoL.G', 'admin@project2.com', 'admin', '2023-12-10 00:19:02');
 
 --
 -- Indexes for dumped tables
@@ -121,7 +121,7 @@ ALTER TABLE `Notes`
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
