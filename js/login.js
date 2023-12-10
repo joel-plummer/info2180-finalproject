@@ -10,7 +10,7 @@ window.onload = function() {
         element.preventDefault();
     
         rhttp = new XMLHttpRequest();
-        var url = "http://localhost/info2180-finalproject/dolphin-crm.php?email="+email.value+"&password="+password.value;
+        var url = "http://localhost/info2180-finalproject/php/dolphin-crm.php?type=login&email="+email.value+"&password="+password.value;
         rhttp.onreadystatechange = toHome;
         rhttp.open('GET', url);
         rhttp.send();
