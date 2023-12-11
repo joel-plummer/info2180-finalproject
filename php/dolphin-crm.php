@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 header("Access-Control-Allow-Origin: *");
 $host = 'localhost';
 $username = 'proj_user';
@@ -33,7 +32,7 @@ if ($_GET['type']==="login"){
         echo "NotFound";
     }
 }
-else if ($_GET['type']==="addU"){
+if ($_GET['type']==="addU"){
     $u_fname = sanitize($_GET['fname']);
     $u_lname = sanitize($_GET['lname']);
     $u_email = sanitize($_GET['email']);
@@ -48,7 +47,8 @@ else if ($_GET['type']==="addU"){
         echo "Error: " . $e->getMessage();
     }
 }
-else if ($_GET['type']==="showU"){
+
+if ($_GET['type']==="showU"){
 
     $user = $conn->query("SELECT firstname, lastname, email, role, created_at FROM Users");
     $results = $user->fetchAll(PDO::FETCH_ASSOC);
@@ -69,6 +69,119 @@ else if ($_GET['type']==="showU"){
     }
     echo("</table>");
     
+}
+if ($_GET['type']==="logout"){
+    $_SESSION = array();    
+    session_destroy();
+    echo "out";
+}
+
+if ($_GET['type']==="showD"){
+    $type = $_GET['filter'];
+    if ($type != "Sales Lead" && $type != "Support"){
+        $user = $conn->query("SELECT id, title, firstname, lastname, email, company, type FROM Contacts");
+    }
+    else{
+        $user = $conn->query("SELECT id, title, firstname, lastname, email, company, type FROM Contacts WHERE type = '$type'");
+    }
+    
+    $results = $user->fetchAll(PDO::FETCH_ASSOC);
+    echo("<table>");
+        echo("<tr>");
+        echo("<th>NAME</th>");
+        echo("<th>EMAIL</th>");
+        echo("<th>COMPANY</th>");
+        echo("<th>TYPE</th>");
+        echo("</tr>");
+    foreach ($results as $row){
+        echo("<tr>");
+        echo("<td>" . $row["title"] . " " . $row["firstname"] . " " . $row["lastname"] . "</td>");
+        echo("<td>".$row["email"]."</td>");
+        echo("<td>".$row["company"]."</td>");
+        echo("<td>".$row["type"]."</td>");
+        $view_id = $row["id"];
+        echo("<td> <a href='#' onclick='viewContact($view_id)' id='$view_id'>view</a></td>");
+        echo("</tr>");
+    }
+    echo("</table>");
+    
+}
+if ($_GET['type']==="Assign"){
+
+    $user = $conn->query("SELECT firstname, lastname FROM Users ");
+    $results = $user->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($results as $row){
+        $name = $row["firstname"] . " " . $row["lastname"];
+        echo "<option value='$name'>" . $row["firstname"] . " " . $row["lastname"] . "</option>";
+    }
+    
+}
+
+if ($_GET['type']==="addC"){
+    $c_title = sanitize($_GET['title']);
+    $c_fname = sanitize($_GET['fname']);
+    $c_lname = sanitize($_GET['lname']);
+    $c_email = sanitize($_GET['email']);
+    $c_tele = $_GET['tele'];
+    $c_company = sanitize($_GET['company']);
+    $c_type = $_GET['ctype'];
+    $c_assign = $_GET['assign'];
+    $nameParts = explode(' ', $c_assign);
+
+    $a_fname = $nameParts[0];
+    $a_lname = $nameParts[1];
+
+
+    $assign_id = $conn->query("SELECT id FROM Users WHERE firstname = '$a_fname' AND lastname = '$a_lname'");
+    $id = $assign_id->fetch(PDO::FETCH_ASSOC);
+    $id = $id['id'];
+
+    try{
+        $user = $conn->query("INSERT INTO Contacts (title, firstname, lastname, email, telephone, company, type, assigned_to) 
+                            VALUES ('$c_title', '$c_fname', '$c_lname', '$c_email', '$c_tele', '$c_company', '$c_type', '$id')");
+        echo "Contact Added Successfully";
+    }
+    catch (PDOException $e) {
+        // echo "Error: " . $e->getMessage();
+        echo " This: " . $id;
+    }
+}
+
+if ($_GET['type']==="viewC"){
+
+    $sel_id = $_GET['sel_id'];
+   
+    $user = $conn->query("SELECT * FROM Contacts WHERE id = '$sel_id'");
+    
+    $res = $user->fetch(PDO::FETCH_ASSOC);
+
+    $assigned = $res["assigned_to"];
+    $created = $res["created_by"];
+
+    $user = $conn->query("SELECT firstname, lastname FROM Users WHERE id = '$assigned'");
+    $a = $user->fetch(PDO::FETCH_ASSOC);
+    $a_fname = $a["firstname"];
+    $a_lname = $a["lastname"];
+
+    $user = $conn->query("SELECT firstname, lastname FROM Users WHERE id = '$created'");
+    $c = $user->fetch(PDO::FETCH_ASSOC);
+    $c_fname = $c["firstname"];
+    $c_lname = $c["lastname"];
+    
+    echo '<div id="heading">' ;
+    echo '<h1>' . $res["title"] . ' ' . $res["firstname"] . ' ' . $res["lastname"] . '</h1>';
+    echo '<p> Created on ' . $res["created_at"] . ' by ' . $c_fname . " " . $c_lname . '</p>';
+    echo '<p> Updated on ' . $res["updated_at"]. '</p>';
+    echo '</div>';
+
+    echo '<div id="sel_info">';
+    echo '<p>';
+    echo 'Email: ' . $res["email"] . '<br>';
+    echo 'Telephone: ' . $res["telephone"] . '<br>';
+    echo 'Company: ' . $res["company"] . '<br>';
+    echo 'Assigned to: ' . $a_fname . " " . $a_lname ;
+    echo '</p>';
+    echo '</div>';
 }
 
 ?>

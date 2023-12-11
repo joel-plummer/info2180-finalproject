@@ -1,79 +1,59 @@
+document.addEventListener('DOMContentLoaded', function() {
+    var result = document.getElementById('showDash');
+    var all = document.getElementById('allC');
+    var leads = document.getElementById('leadsC');
+    var support = document.getElementById('supportC');
+    var assign = document.getElementById('assignC');
+    var filter = "";
+    fetchData(filter);
+    AssignList();
 
-window.onload = function() {
-    var newUser = document.getElementById('addUser');
-    var userError = document.getElementById('newUserError');
-    var fname;
-    var lname;
-    var email;
-    var pass;
-    var role;
-
-
-    newUser.addEventListener("click", function(element){
-        element.preventDefault();
-
-        fname = document.getElementById('u-first-name').value.trim();
-        lname = document.getElementById('u-last-name').value.trim();
-        email = document.getElementById('u-email').value.trim();
-        pass = document.getElementById('u-pass').value.trim();
-        role = document.getElementById('u-role').value.trim();
-
-        var info = [fname, lname, email, pass, role];
-        var check;
-        check = validateForm(info);
-
-        if (!check[0]){
-            userError.textContent = check[1];
-        }
-        else{
-            rhttp = new XMLHttpRequest();
-            var url = "http://localhost/info2180-finalproject/php/dolphin-crm.php?type=addU&fname="+fname
-                        +"&lname="+lname
-                        +"&email="+email
-                        +"&pass="+pass
-                        +"&role="+role;
-            rhttp.onreadystatechange = addUser;
-            rhttp.open('GET', url);
-            rhttp.send();
-            // userError.textContent = "Success";
-        }
+    all.addEventListener("click", function(){
+        filter = "all";
+        fetchData(filter);
     });
 
+    leads.addEventListener("click", function(){
+        filter = "Sales Lead";
+        fetchData(filter);
+    });
 
-    function addUser(){
-        if (rhttp.readyState == 4 && rhttp.status == 200){
-            var response = rhttp.responseText.trim();
-            userError.textContent = response;
-        }
+    support.addEventListener("click", function(){
+        filter = "Support";
+        fetchData(filter);
+    });
+
+    assign.addEventListener("click", function(){
+        filter = "assign";
+        fetchData(filter);
+    });
+
+    // console.log("here");
+      
+
+    function fetchData(filterVal) {
+        var xhttp = new XMLHttpRequest();  
+        var url = "http://localhost/info2180-finalproject/php/dolphin-crm.php?type=showD&filter="+filterVal;
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {  
+                result.innerHTML = xhttp.responseText;  
+            }
+        };
+        xhttp.open('GET', url); 
+        xhttp.send();
     }
 
-
-    function validateForm(info) {
-        for (var field of info) {
-            if (field===""){
-                return [false, 'Please do not leave any fielcds blank'];
+    function AssignList(){
+        var result = document.getElementById('c-assign');
+        var xhttp = new XMLHttpRequest();  
+        var url = "http://localhost/info2180-finalproject/php/dolphin-crm.php?type=Assign";
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {  
+                result.innerHTML = xhttp.responseText;  
             }
-          }
-
-        var email = info[2];
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        const isValidEmail = emailPattern.test(email);
-        if (!isValidEmail) {
-            return [false, 'Please enter a valid email address.']
-        } 
-
-
-        var pass = info[3];
-        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-        const isValidPass = passwordPattern.test(pass);
-        if (!isValidPass) {
-            return [false, 'Please enter a valid password.']
-        } 
-        
-        return [true,'']; 
+        };
+        xhttp.open('GET', url); 
+        xhttp.send();
+    }
     
-      }
-
-}
-
-
+});
