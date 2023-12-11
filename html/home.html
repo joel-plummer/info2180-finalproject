@@ -11,7 +11,7 @@
     <script src="../js/addContact.js" type="text/javascript"></script>
     <script src="../js/viewContact.js" type="text/javascript"></script>
     <script src="../js/home.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/home.css">
     <title>Dolphin CRM</title>
 </head>
 
@@ -38,6 +38,10 @@
 
         <script>
             function viewContact(id){
+                var HomePage = document.getElementById('home'); 
+                HomePage.classList.add("hidden");
+
+
                 var result = document.getElementById('sel_contact');
                 var xhttp = new XMLHttpRequest();  
                 var url = "http://localhost/info2180-finalproject/php/dolphin-crm.php?type=viewC&sel_id="+id;
@@ -49,6 +53,7 @@
                 xhttp.open('GET', url); 
                 xhttp.send();
             }
+
         </script>
 
         <div id="home" class="page">
@@ -59,51 +64,31 @@
                 <div id="showDash">
 
                 </div>
+                <br>
+
+                <div class="table-container">
+                    <div class="table-filter">
+    
+                        <label for="filter">Filter By:</label>
+                        <a href="#" id="allC">All</a>
+                        <a href="#" id="leadsC">Sales Leads</a>
+                        <a href="#" id="supportC">Support</a>
+                        <a href="#" id="assignC">Assigned to me</a>
+    
+                    </div>
+                </div>
+
                 <div class="add-button">
                     <button id="NewContactBtn2"><i class="fa-solid fa-plus"></i>Add Contact</button> 
                 </div>
+
+                <br><hr>
+
+                
                 
             </div>
 
-            <div class="table-container">
-                <div class="table-filter">
-
-                    <label for="filter">Filter By:</label>
-                    <ul id="filter">
-                        <li><a href="#" id="allC">All</a></li>
-                        <li><a href="#" id="leadsC">Sales Leads</a></li>
-                        <li><a href="#" id="supportC">Support</a></li>
-                        <li><a href="#" id="assignC">Assigned to me</a></li>
-                    </ul>
-
-                </div>
-
-                <div class="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Company</th>
-                            <th>Type</th>
-                            <th></th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>View</td>
-                        </tr>
-                    </tbody>
-
-
-                </div>
-
-            </div>
+            
 
         </div>
 
@@ -194,6 +179,7 @@
                 <div id="showUser">
 
                 </div>
+                <br>
                 <div class="add-button">
                     <button id="button"><i class="fa-solid fa-plus"></i>Add User</button>
                 </div>
@@ -201,31 +187,6 @@
 
             </div>
 
-            <div>
-                <div class="table-container">
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Created</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                </div>
-            </div>
         </div>
 
 
@@ -275,7 +236,7 @@
             
 
              
-            <div class="view-contact">
+            <div class="view-contact" id="view-contact" >
 
 
                 <div id="view_header">
@@ -311,46 +272,9 @@
             <div id="sel_contact">
 
             </div>
-
-
-            <div>
-                <div id="note_header">
-                    <img src="" alt="">
-                    <h2>Notes</h2>
-                </div>
-
-
-                <section id="comments">
-                    <div id="comment">
-                        <p>
-                            <strong>Jane doe</strong><br>
-                            sadhvbxfjhv xf sdbsdchsdh jsdhcdshcbdshc
-
-                        </p>
-                    </div>
-
-
-
-                    <div>
-                        <label for="input_comment">Add a note about Micheal</label>
-                        <textarea name="input_comment" id="input_comment" cols="30" rows="10"></textarea>
-                    </div>
-
-                    <button>Add Note</button>
-
-
-
-                </section>
-
-
-            </div>
+                
             
         </div>
-
-        <div id="logout">
-
-        </div>
-
 
 
     </div>

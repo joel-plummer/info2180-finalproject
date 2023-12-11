@@ -52,7 +52,7 @@ if ($_GET['type']==="showU"){
 
     $user = $conn->query("SELECT firstname, lastname, email, role, created_at FROM Users");
     $results = $user->fetchAll(PDO::FETCH_ASSOC);
-    echo("<table>");
+    echo("<table class='table'>");
         echo("<tr>");
         echo("<th>NAME</th>");
         echo("<th>EMAIL</th>");
@@ -86,7 +86,7 @@ if ($_GET['type']==="showD"){
     }
     
     $results = $user->fetchAll(PDO::FETCH_ASSOC);
-    echo("<table>");
+    echo("<table class='table'>");
         echo("<tr>");
         echo("<th>NAME</th>");
         echo("<th>EMAIL</th>");
@@ -175,12 +175,10 @@ if ($_GET['type']==="viewC"){
     echo '</div>';
 
     echo '<div id="sel_info">';
-    echo '<p>';
-    echo 'Email: ' . $res["email"] . '<br>';
-    echo 'Telephone: ' . $res["telephone"] . '<br>';
-    echo 'Company: ' . $res["company"] . '<br>';
-    echo 'Assigned to: ' . $a_fname . " " . $a_lname ;
-    echo '</p>';
+    echo '<p> Email: ' . $res["email"] . '</p> <br>';
+    echo '<p> Telephone: ' . $res["telephone"] . '</p> <br>';
+    echo '<p> Company: ' . $res["company"] . ' </p> <br>';
+    echo '<p> Assigned to: ' . $a_fname . " " . $a_lname. ' </p>';
     echo '</div>';
 }
 
