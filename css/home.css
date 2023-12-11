@@ -152,7 +152,7 @@ header {
 #sel_info p {
     font-size: 16px;
     color: #333;
-    background-color: #e8e8e8;
+    background-color: #f2f2f2;
     padding: 15px;
     border-radius: 4px;
     margin: 0;
@@ -178,4 +178,26 @@ button {
 
 button:hover {
     background-color: #555;
+}
+
+#swap_res {
+    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.confirm{
+    background-color: #e1ffcc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: #2b7c00;
+}
+
+.error{
+    background-color: #ffcccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    color: #cc0000;
 }

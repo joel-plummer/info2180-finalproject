@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     users.addEventListener("click", function(){
         // console.log("here");
+        View_users();
+    });
+
+    function View_users(){
         var xhttp = new XMLHttpRequest();  
         var url = "http://localhost/info2180-finalproject/php/dolphin-crm.php?type=showU";
         xhttp.onreadystatechange = function() {
@@ -13,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         xhttp.open('GET', url); 
         xhttp.send();  
-    });
+    }
 
     
 });

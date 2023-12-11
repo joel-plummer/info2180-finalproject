@@ -229,7 +229,7 @@
                 </div>
 
                 <div class="save-button">
-                    <button id="addUser"></i>Save</button>
+                    <button id="addUser" onclick="View_users();"></i>Save</button>
                  </div>
 
         
@@ -238,6 +238,23 @@
 
              
             <div class="view-contact" id="view-contact" >
+
+                <script>
+                    function swap(id){
+                        var res = document.getElementById('swap_res');
+                        var xhttp = new XMLHttpRequest();  
+                        var url = "http://localhost/info2180-finalproject/php/dolphin-crm.php?type=swap&sel_id="+id;
+                        xhttp.onreadystatechange = function() {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {  
+                                res.innerHTML = xhttp.responseText;  
+                                res.classList.add('confirm');
+                            }
+                        };
+                        xhttp.open('GET', url); 
+                        xhttp.send();
+                    }
+        
+                </script>
 
 
                 <div id="view_header">

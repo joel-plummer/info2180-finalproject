@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!check[0]){
             userError.textContent = check[1];
+            userError.classList.remove('confirm');
+            userError.classList.add('error');
         }
         else{
             rhttp = new XMLHttpRequest();
@@ -51,6 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (rhttp.readyState == 4 && rhttp.status == 200){
             var response = rhttp.responseText.trim();
             userError.textContent = response;
+            userError.classList.remove('error');
+            userError.classList.add('confirm');
         }
     }
 

@@ -184,7 +184,34 @@ if ($_GET['type']==="viewC"){
     echo '<hr>';
     echo '<br>';
     echo '<button id="a_t_me" style="margin-right:10px;"> Assign to me </button>';
-    echo '<button id="s_t_me"> Switch to me </button>';
+    if ($res["type"]==="Support"){
+        echo "<button id='switch' onclick='swap($sel_id)'> Switch to Sales Lead </button>";
+    }
+    else{
+        echo "<button id='switch' onclick='swap($sel_id)'> Switch to Support </button>";
+    }
+    echo '<div id="swap_res">';
+    echo '</div>';
+    
+}
+
+if ($_GET['type']==="swap"){
+    $sel_id = $_GET['sel_id'];
+
+    $user = $conn->query("SELECT * FROM Contacts WHERE id = '$sel_id'");
+    
+    $res = $user->fetch(PDO::FETCH_ASSOC);
+    $type = $res["type"];
+
+    if ($type ==="Support"){
+        $user = $conn->query("UPDATE Contacts SET type='Sales Lead' WHERE id='$sel_id'");
+        echo "Type changed to Sales Lead";
+    }
+    else{
+        $user = $conn->query("UPDATE Contacts SET type='Support' WHERE id='$sel_id'");
+        echo "Type changed to Support";
+    }
+    
 }
 
 ?>
