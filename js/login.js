@@ -22,6 +22,7 @@ window.onload = function() {
                }
                else{
                 result.innerHTML="<p>" + response + "</p>";
+                result.classList.add('error');
                }
             }
         }
