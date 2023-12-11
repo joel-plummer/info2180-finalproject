@@ -190,7 +190,27 @@ if ($_GET['type']==="viewC"){
     }
     echo '<div id="swap_res">';
     echo '</div>';
-    echo '<hr><br>';
+    echo '<hr>';
+    echo '<h2> Notes: </h2>';
+    echo '<div id="notes">';
+    // echo 'hello';
+    $user = $conn->query("SELECT * FROM Notes WHERE contact_id = '$sel_id'");
+    $notes = $user->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($notes as $row){
+        $n_id = $row["created_by"];
+
+        $user = $conn->query("SELECT firstname, lastname FROM Users WHERE id = '$n_id'");
+        $u = $user->fetch(PDO::FETCH_ASSOC);
+        $u_fname = $u["firstname"];
+        $u_lname = $u["lastname"];
+        echo '<div class="note_item">';
+        echo '<h3>' . $u_fname . ' ' . $u_lname . '</h3>';
+        echo '<p>' . $row["comment"] . '</p>';
+        echo '<p><em>' . $row["created_at"] . '</em></p>';
+        echo '</div>';
+    }
+    echo '</div>';
     
 }
 
