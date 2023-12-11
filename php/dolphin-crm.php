@@ -175,11 +175,16 @@ if ($_GET['type']==="viewC"){
     echo '</div>';
 
     echo '<div id="sel_info">';
-    echo '<p> Email: ' . $res["email"] . '</p> <br>';
-    echo '<p> Telephone: ' . $res["telephone"] . '</p> <br>';
-    echo '<p> Company: ' . $res["company"] . ' </p> <br>';
-    echo '<p> Assigned to: ' . $a_fname . " " . $a_lname. ' </p>';
+    echo '<p> <b> Email: </b> ' . $res["email"] . '</p> <br>';
+    echo '<p> <b> Telephone: </b>' . $res["telephone"] . '</p> <br>';
+    echo '<p> <b> Company: </b>' . $res["company"] . ' </p> <br>';
+    echo '<p> <b> Assigned to: </b>' . $a_fname . " " . $a_lname. ' </p>';
     echo '</div>';
+    echo '<br>';
+    echo '<hr>';
+    echo '<br>';
+    echo '<button id="a_t_me" style="margin-right:10px;"> Assign to me </button>';
+    echo '<button id="s_t_me"> Switch to me </button>';
 }
 
 ?>

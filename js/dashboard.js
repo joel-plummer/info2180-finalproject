@@ -4,9 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
     var leads = document.getElementById('leadsC');
     var support = document.getElementById('supportC');
     var assign = document.getElementById('assignC');
+    var HomeBtn = document.getElementById('HomeBtn');
     var filter = "";
     fetchData(filter);
     AssignList();
+
+    HomeBtn.addEventListener("click", function(){
+        filter = "all";
+        fetchData(filter);
+    });
 
     all.addEventListener("click", function(){
         filter = "all";

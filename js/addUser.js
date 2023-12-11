@@ -1,11 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     var newUser = document.getElementById('addUser');
+    var toUser = document.getElementById('goToUser');
+    var user = document.getElementById('new_user');
     var userError = document.getElementById('newUserError');
+
     var fname;
     var lname;
     var email;
     var pass;
     var role;
+
+    toUser.addEventListener("click", function(){
+        user.classList.remove("hidden");
+        console.log("test");
+    });
 
 
     newUser.addEventListener("click", function(element){
