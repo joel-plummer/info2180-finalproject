@@ -22,7 +22,7 @@ window.onload = function() {
             var response = rhttp.responseText.trim();
             console.log(response);
            if (response === 'success'){
-                window.location.href = 'home.html';
+                window.location.href = '../html/home.html';s
                 // console.log(response);
            }
            else{

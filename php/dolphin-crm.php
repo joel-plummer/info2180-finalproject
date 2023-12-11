@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 header("Access-Control-Allow-Origin: *");
 $host = 'localhost';
 $username = 'proj_user';
@@ -12,16 +14,17 @@ function sanitize($input) {
 }
 
 $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-$user = $conn->query("SELECT * FROM Users WHERE email = '$email'");
 
 if ($_GET['type']==="login"){
     $email = $_GET['email'];
     $pass = $_GET['password'];
 
+    $user = $conn->query("SELECT * FROM Users WHERE email = '$email'");
+
     if ($user ->rowCount()>0) {
         $row = $user->fetch(PDO::FETCH_ASSOC);
-        // Verify hashed password
         if (password_verify($pass, $row['password'])) {
+            $_SESSION['role'] = $row['role'];
             echo "success";
         } else {
             echo "Invalid";
@@ -45,4 +48,27 @@ else if ($_GET['type']==="addU"){
         echo "Error: " . $e->getMessage();
     }
 }
+else if ($_GET['type']==="showU"){
+
+    $user = $conn->query("SELECT firstname, lastname, email, role, created_at FROM Users");
+    $results = $user->fetchAll(PDO::FETCH_ASSOC);
+    echo("<table>");
+        echo("<tr>");
+        echo("<th>NAME</th>");
+        echo("<th>EMAIL</th>");
+        echo("<th>ROLE</th>");
+        echo("<th>CREATED</th>");
+        echo("</tr>");
+    foreach ($results as $row){
+        echo("<tr>");
+        echo("<td>" . $row["firstname"] . " " . $row["lastname"] . "</td>");
+        echo("<td>".$row["email"]."</td>");
+        echo("<td>".$row["role"]."</td>");
+        echo("<td>".$row["created_at"]."</td>");
+        echo("</tr>");
+    }
+    echo("</table>");
+    
+}
+
 ?>
