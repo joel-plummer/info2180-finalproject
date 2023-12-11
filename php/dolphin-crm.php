@@ -181,8 +181,6 @@ if ($_GET['type']==="viewC"){
     echo '<p> <b> Assigned to: </b>' . $a_fname . " " . $a_lname. ' </p>';
     echo '</div>';
     echo '<br>';
-    echo '<hr>';
-    echo '<br>';
     echo '<button id="a_t_me" style="margin-right:10px;"> Assign to me </button>';
     if ($res["type"]==="Support"){
         echo "<button id='switch' onclick='swap($sel_id)'> Switch to Sales Lead </button>";
@@ -192,6 +190,7 @@ if ($_GET['type']==="viewC"){
     }
     echo '<div id="swap_res">';
     echo '</div>';
+    echo '<hr><br>';
     
 }
 

@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', function() {
             status.textContent = check[1];
             status.classList.remove('confirm');
             status.classList.add('error');
+            document.getElementById('c-first-name').value="";
+            document.getElementById('c-last-name').value="";
+            document.getElementById('c-email').value="";
+            document.getElementById('c-telephone').value="";
+            document.getElementById('c-company').value="";
         }
         else{
             rhttp = new XMLHttpRequest();
@@ -57,6 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
             status.textContent = response;
             status.classList.remove('error');
             status.classList.add('confirm');
+            document.getElementById('c-first-name').value="";
+            document.getElementById('c-last-name').value="";
+            document.getElementById('c-email').value="";
+            document.getElementById('c-telephone').value="";
+            document.getElementById('c-company').value="";
         }
     }
 

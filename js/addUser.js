@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
             userError.textContent = check[1];
             userError.classList.remove('confirm');
             userError.classList.add('error');
+            document.getElementById('u-first-name').value="";
+            document.getElementById('u-last-name').value="";
+            document.getElementById('u-email').value="";
+            document.getElementById('u-pass').value="";
         }
         else{
             rhttp = new XMLHttpRequest();
@@ -55,6 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
             userError.textContent = response;
             userError.classList.remove('error');
             userError.classList.add('confirm');
+            document.getElementById('u-first-name').value="";
+            document.getElementById('u-last-name').value="";
+            document.getElementById('u-email').value="";
+            document.getElementById('u-pass').value="";
         }
     }
 
@@ -62,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function validateForm(info) {
         for (var field of info) {
             if (field===""){
-                return [false, 'Please do not leave any fielcds blank'];
+                return [false, 'Please do not leave any fields blank'];
             }
           }
 
