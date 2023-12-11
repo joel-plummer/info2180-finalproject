@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="styles.css">
+<script src="../js/home.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,16 +22,16 @@
 
     <div class="nav-bar">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">New Contact</a></li>
-            <li><a href="#">Users</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="#" id="HomeBtn">Home</a></li>
+            <li><a href="#" id="NewContactBtn">New Contact</a></li>
+            <li><a href="#" id="UsersBtn">Users</a></li>
+            <li><a href="#" id="LogoutBtn">Logout</a></li>
         </ul>
     </div>
 
     <div class="content">
 
-        <div id="home">
+        <div id="home" class="page">
             <div class="table-header">
                 <div class="page-heading">
                     <h2>Dashboard</h2>
@@ -85,7 +87,7 @@
 
         </div>
 
-        <div id="new-contact">
+        <div id="new-contact" class="page">
 
             <h1>New Contact</h1>
             <div>
@@ -161,7 +163,7 @@
         </div>
 
 
-        <div id="users">
+        <div id="users" class="page">
 
             <div class="table-header">
                 <div class="page-heading">
@@ -202,7 +204,7 @@
         </div>
 
 
-        <div class="new-user">
+        <div class="new-user, page">
 
             <div id="newUserError">
 
@@ -247,7 +249,7 @@
             </form>
 
              
-            <div class="view-contact">
+            <div class="view-contact, page">
 
 
                 <div id="view_header">
